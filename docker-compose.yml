@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./backend
+    volumes:
+      - ./backend:/go/src/api
+    ports:
+      - 3001:3001
+    tty:
+      true
