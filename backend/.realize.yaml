@@ -1,19 +1,23 @@
 settings:
   legacy:
-    force: false
+    force: true
     interval: 0s
 schema:
-- name: hoge
-  path: path/to/server
+- name: local
+  path: .
   commands:
     install:
       status: true
+      method: go build main.go
     run:
       status: true
+      method: ./main
   watcher:
     extensions:
     - go
     paths:
-    - path/from/server
-    ignore_paths:
+    - .
+    ignored_paths:
     - .git
+    - .realize
+    - vendor
