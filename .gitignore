@@ -12,6 +12,7 @@ front-end/coverage
 front-end/build
 
 # misc
+.env
 .DS_Store
 .env.local
 .env.development.local
@@ -25,3 +26,5 @@ front-end/yarn-error.log*
 
 backend/local_development
 backend/main
+
+data
