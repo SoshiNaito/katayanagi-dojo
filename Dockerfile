@@ -1,8 +1,8 @@
-FROM golang:alpine
+FROM golang:1.14
 
-RUN apk add --no-cache git
+
 RUN go get github.com/oxequa/realize
-
+RUN go get github.com/rubenv/sql-migrate/...
 
 ENV CGO_ENABLED=0 \
   GOOS=linux \

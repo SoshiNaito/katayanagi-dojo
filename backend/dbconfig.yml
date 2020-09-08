@@ -1,0 +1,4 @@
+development:
+    dialect: mysql 
+    datasource: root:root@tcp([mysql]:3306)/katayanagi-dojo?parseTime=true
+    dir: db/migrations
