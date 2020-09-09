@@ -9,6 +9,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import PostList from './components/PostList';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,7 +18,7 @@ ReactDOM.render(
         <App />
       </Route>
       <Route path='/'>
-        <PostContent />
+        <PostList />
       </Route>
     </Router>
 
