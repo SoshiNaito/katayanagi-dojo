@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -70,7 +70,7 @@ function PostList() {
         try {
             //ここでGETメソッドを使用してgithubのプロフィールを取得します。
             const result = await axios.get(
-                `${'http://localhost:3001/'}`
+                `${'http://localhost:3001/getPost'}`
             );
             console.log(result);
         } catch (error) {
@@ -78,6 +78,10 @@ function PostList() {
             console.log('error!!');
         }
     };
+    useEffect(() => {
+        getProfile()
+    });
+
 
 
 

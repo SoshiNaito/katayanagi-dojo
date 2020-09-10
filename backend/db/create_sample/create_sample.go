@@ -1,14 +1,21 @@
 package create_sample
 
 import (
+	"backend/pkg/infra"
+	"backend/pkg/server/model"
 	"backend/pkg/server/usecase"
-	"fmt"
 )
 
 type SampleData struct {
 }
 
 func Create_sample() {
-	hoge, _ := usecase.Upload_S3("/app/db/create_sample/image.jpg", "hoge.jpg")
-	fmt.Println(hoge)
+	var data model.Post
+	data.Post_url, _ = usecase.Upload_S3("/app/db/create_sample/image.jpg", "hoge.jpg")
+	data.Title = "hoge"
+	data.Location = "hoge"
+	client, _ := infra.Init_mysql()
+
+	client.From("post").Create(&data)
+	// fmt.Println(hoge)
 }
