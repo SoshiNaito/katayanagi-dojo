@@ -19,7 +19,7 @@ function SignIn() {
 
 	const logout = () => {
 		firebase.auth().signOut();
-		sessionStorage.setItem('uid', null)
+		sessionStorage.removeItem('uid')
 	}
 
 	if (loading) return <div>loading</div>;
