@@ -6,6 +6,8 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import axios from 'axios';
+
 // import tileData from './tileData';
 
 const useStyles = makeStyles((theme) => ({
@@ -63,8 +65,25 @@ function PostList() {
         },
     ];
 
+    // const userName = 'reo777';
+    const getProfile = async () => {
+        try {
+            //ここでGETメソッドを使用してgithubのプロフィールを取得します。
+            const result = await axios.get(
+                `${'http://localhost:3001/'}`
+            );
+            console.log(result);
+        } catch (error) {
+            //ここでリクエストに失敗した時の処理、メッセージを記述します。
+            console.log('error!!');
+        }
+    };
+
+
+
 
     return (
+
         <div className={classes.root}>
             <GridList cellHeight={180} className={classes.gridList}>
                 <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
@@ -85,7 +104,12 @@ function PostList() {
                     </GridListTile>
                 ))}
             </GridList>
+
+            <div>
+                <button onClick={() => getProfile()}>get profile!</button>
+            </div>
         </div>
+
     );
 }
 
