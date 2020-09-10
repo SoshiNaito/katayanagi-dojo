@@ -10,3 +10,4 @@ down:
 
 init/mysql:
 	docker-compose exec backend bash -c "sql-migrate up"
+	docker-compose exec backend bash -c "go run cmd/createsample.go"
