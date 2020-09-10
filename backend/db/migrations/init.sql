@@ -15,7 +15,8 @@ IF NOT EXISTS post
     user_id VARCHAR(128),
     location VARCHAR(128),
     title VARCHAR(128),
-    create_at TIMESTAMP
+    create_at VARCHAR(128),
+    post_url  VARCHAR(128) 
 
 );
 
