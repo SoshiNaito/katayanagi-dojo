@@ -11,7 +11,7 @@ IF NOT EXISTS user
 CREATE TABLE
 IF NOT EXISTS post
 ( 
-    post_id VARCHAR(128) NOT NULL PRIMARY KEY,
+    post_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     user_id VARCHAR(128),
     location VARCHAR(128),
     title VARCHAR(128),
