@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: 500,
-        height: 450,
+        width: 1000,
+        height: 900,
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
@@ -30,11 +30,35 @@ function PostList() {
 
     var tileData = [
         {
-            img: "https://www.pixiv.net/artworks/84268653",
+            img: "http://localhost:9000/mybucket/hoge.jpg",
 
         },
         {
-            img: "https://www.pixiv.net/artworks/84268653",
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
+
+        },
+        {
+            img: "http://localhost:9000/mybucket/hoge.jpg",
 
         },
     ];
