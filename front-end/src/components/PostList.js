@@ -30,56 +30,18 @@ const useStyles = makeStyles((theme) => ({
 function PostList() {
     const classes = useStyles();
 
-    var tileData = [
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
+    var tileData = [];
 
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
 
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-        {
-            img: "http://localhost:9000/mybucket/hoge.jpg",
-
-        },
-    ];
-
-    // const userName = 'reo777';
-    const getProfile = async () => {
-        try {
-            //ここでGETメソッドを使用してgithubのプロフィールを取得します。
-            const result = await axios.get(
-                `${'http://localhost:3001/getPost'}`
-            );
-            console.log(result);
-        } catch (error) {
-            //ここでリクエストに失敗した時の処理、メッセージを記述します。
-            console.log('error!!');
-        }
-    };
     useEffect(() => {
-        getProfile()
+        axios
+            .get(`${'http://localhost:3001/getPost'}`)
+            .then(results => {
+                console.log(results.data)
+                console.log(tileData)
+                tileData = results.data
+                console.log(tileData)
+            })
     });
 
 
@@ -94,8 +56,8 @@ function PostList() {
                     <ListSubheader component="div">投稿一覧</ListSubheader>
                 </GridListTile>
                 {tileData.map((tile) => (
-                    <GridListTile key={tile.img}>
-                        <img src={tile.img} alt={tile.title} />
+                    <GridListTile key={tile.Post_url}>
+                        <img src={tile.Post_url} alt={tile.title} />
                         <GridListTileBar
                             title={tile.title}
                             subtitle={<span>by: {tile.author}</span>}
@@ -108,10 +70,8 @@ function PostList() {
                     </GridListTile>
                 ))}
             </GridList>
-
-            <div>
-                <button onClick={() => getProfile()}>get profile!</button>
-            </div>
+            {/* <div>
+            </div> */}
         </div>
 
     );
