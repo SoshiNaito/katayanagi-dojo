@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Redirect } from 'react-router-dom'
-
+import axios from 'axios';
 
 function Post() {
 	const [title, setTitle] = useState("");
@@ -33,12 +33,15 @@ function Post() {
 	const handlePost = () => {
 		//postする処理で成功したらした
 		console.log(image)
-		console.log(title)
+		console.log("hogehoge", sessionStorage.getitem)
 		console.log(location)
 		const encodedImage = btoa(image);
 		console.log(encodedImage)
 		//これ外せばhomeにリダイレクトする。
 		// setIsRedirect(true)
+		const hoge = { Title: title, Post_image: encodedImage, Location: location }
+		axios.post(`${'http://localhost:3001/post'}`, hoge)
+
 	}
 
 	if (isRedirect === true) {

@@ -14,6 +14,7 @@ func Server(r *gin.Engine, port string) {
 		})
 	})
 	r.GET("/getPost", handler.GetPost)
+	r.POST("/post", handler.PostContent)
 
 	r.Run(port)
 }

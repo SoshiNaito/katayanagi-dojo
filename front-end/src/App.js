@@ -16,12 +16,12 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route exact path='/'>home</Route>
+        <Route exact path='/'><PostList /></Route>
         <Route exact path='/post'><Post /></Route>
         {uid === null &&
           <Redirect to="/login" />
         }
-        <Route path='/home'>home</Route>
+        <Route path='/home'><PostList /></Route>
         <Route path='/login'><SignIn /></Route>
         <Route path='/hogehoge'>
           <PostList />
