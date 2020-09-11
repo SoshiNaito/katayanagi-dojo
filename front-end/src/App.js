@@ -1,23 +1,21 @@
 import React from 'react';
 import './assets/styles/App.css'
-
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import SignIn from './pages/SignIn'
 
 function App() {
+  const uid = sessionStorage.getItem('uid')
+  console.log(uid)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        {uid === null &&
+          <Redirect to="/login" />
+        }
+        <Route path='/home'>home</Route>
+        <Route path='/login'><SignIn /></Route>
+      </Router>
     </div>
   );
 }
