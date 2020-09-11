@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import SignIn from './pages/SignIn'
 import PostList from './components/PostList';
 
-
+import Mypage from './pages/Mypage'
 function App() {
   const uid = sessionStorage.getItem('uid')
 
@@ -23,8 +23,8 @@ function App() {
         }
         <Route path='/home'><PostList /></Route>
         <Route path='/login'><SignIn /></Route>
-        <Route path='/hogehoge'>
-          <PostList />
+        <Route path='/mypage'>
+          <Mypage />
         </Route>
       </Router>
     </div>
