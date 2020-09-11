@@ -5,6 +5,7 @@ import (
 	"backend/pkg/server/model"
 	"backend/pkg/server/usecase"
 	"fmt"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,6 +24,7 @@ func GetPost(c *gin.Context) {
 func PostContent(c *gin.Context) {
 
 	var requestData Data
+	var data model.Post
 	c.BindJSON(&requestData)
 
 	// uuidObj, _ := uuid.NewRandom()
@@ -31,6 +33,18 @@ func PostContent(c *gin.Context) {
 	fmt.Println("hogehoge", requestData)
 	path, err := usecase.SaveImage(requestData.Post_image)
 	fmt.Println("hoigehoge", path, err)
+	data.User_id = requestData.User_id
+	data.Location = requestData.Location
+	data.Post_url = path
+	data.Title = requestData.Title
+	day := time.Now()
+	const layout = "2006-01-02"
+
+	data.Create_at = day.Format(layout)
+
+	client, _ := infra.Init_mysql()
+
+	client.From("content_data").Create(&data)
 	c.JSON(200, "ok")
 }
 
