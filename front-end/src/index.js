@@ -8,19 +8,10 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import PostList from './components/PostList';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Route path='/hoge'>
-        <App />
-      </Route>
-      <Route path='/'>
-        <PostList />
-      </Route>
-    </Router>
-
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

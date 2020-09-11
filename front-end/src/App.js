@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import './assets/styles/App.css'
 import Post from './pages/Post'
@@ -7,6 +6,8 @@ import Header from './components/Header'
 
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import SignIn from './pages/SignIn'
+import PostList from './components/PostList';
+
 
 function App() {
   const uid = sessionStorage.getItem('uid')
@@ -22,6 +23,9 @@ function App() {
         }
         <Route path='/home'>home</Route>
         <Route path='/login'><SignIn /></Route>
+        <Route path='/hogehoge'>
+          <PostList />
+        </Route>
       </Router>
     </div>
   );
