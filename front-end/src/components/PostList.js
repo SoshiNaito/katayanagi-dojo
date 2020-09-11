@@ -30,22 +30,59 @@ const useStyles = makeStyles((theme) => ({
 function PostList() {
     const classes = useStyles();
 
-    var tileData = [];
+    var tileData = [
+        {
+            Create_at: "",
+            Location: "hoge",
+            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+            Title: "hoge",
+            User_id: "",
+        },
+        {
+            Create_at: "",
+            Location: "hoge",
+            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+            Title: "hoge",
+            User_id: "",
+        },
+        {
+            Create_at: "",
+            Location: "hoge",
+            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+            Title: "hoge",
+            User_id: "hoe",
+        },
+        {
+            Create_at: "",
+            Location: "hoge",
+            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+            Title: "hoge",
+            User_id: "hoge",
+        },
+        {
+            Create_at: "",
+            Location: "hoge",
+            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+            Title: "hoge",
+            User_id: "hoge",
+        }
+    ];
+    // const [tileData, setPost] = useState();
 
 
     useEffect(() => {
         axios
             .get(`${'http://localhost:3001/getPost'}`)
             .then(results => {
-                console.log(results.data)
-                console.log(tileData)
-                tileData = results.data
-                console.log(tileData)
+                // setPost(results.data)
+                console.log(results.data);
             })
     });
 
 
+    // var list = tileData.map(function (tile) {
 
+    // });
 
 
     return (
@@ -60,7 +97,7 @@ function PostList() {
                         <img src={tile.Post_url} alt={tile.title} />
                         <GridListTileBar
                             title={tile.title}
-                            subtitle={<span>by: {tile.author}</span>}
+                            subtitle={<span>by: {tile.Title}</span>}
                             actionIcon={
                                 <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
                                     <InfoIcon />
@@ -69,9 +106,11 @@ function PostList() {
                         />
                     </GridListTile>
                 ))}
+
             </GridList>
             {/* <div>
             </div> */}
+
         </div>
 
     );
