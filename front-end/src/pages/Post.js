@@ -37,6 +37,7 @@ function Post() {
 		console.log(location)
 		const encodedImage = btoa(image);
 		console.log(encodedImage)
+		//これ外せばhomeにリダイレクトする。
 		// setIsRedirect(true)
 	}
 

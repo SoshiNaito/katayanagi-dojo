@@ -1,6 +1,8 @@
 package server
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 func Server(r *gin.Engine, port string) {
 
@@ -9,5 +11,6 @@ func Server(r *gin.Engine, port string) {
 			"message": "ping",
 		})
 	})
+
 	r.Run(port)
 }
