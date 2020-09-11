@@ -1,0 +1,33 @@
+.post__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px 0 0 0;
+}
+.post {
+  width: 80%;
+}
+
+.post__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview__wrap {
+  height: 250px;
+}
+
+.preview {
+  max-width: 100%;
+  height: auto;
+}
+
+.preview__wrap--null {
+  height: 250px;
+  border: 1px solid;
+}
+
+.preview--null {
+  color: #b4b4b4;
+}
