@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 function Header() {
 	return (
-		<header className="App-header">
-			<Link to="/">home</Link>
-			<Link to="/post">+</Link>
+		<header className="header">
+			<Link className="header__home" to="/">home</Link>
+			<Link className="header__post" to="/post">+</Link>
 		</header>
 	)
 }
