@@ -24,20 +24,20 @@ func Upload_S3(filepath string, filename string) (string, error) {
 
 func SaveImage(filepath string) (string, error) {
 
-	format, err := AnalyzeFormat(filepath)
-	if err != nil {
-		return "", err
-	}
+	// format, err := AnalyzeFormat(filepath)
+	// if err != nil {
+	// 	return "", err
+	// }
 
-	if format == "jpeg" {
-		result_path, err := Upload_S3(filepath, fmt.Sprintf("%s.jpg", Uuid4()))
-		return result_path, err
-	} else if format == "png" {
-		result_path, err := Upload_S3(filepath, fmt.Sprintf("%s.png", Uuid4()))
-		return result_path, err
-	}
+	// if format == "jpeg" {
+	result_path, _ := Upload_S3(filepath, fmt.Sprintf("%s.jpg", Uuid4()))
+	return result_path, nil
+	// } else if format == "png" {
+	// result_path, err := Upload_S3(filepath, fmt.Sprintf("%s.png", Uuid4()))
+	// return result_path, err
+	// }
 
-	return "", nil
+	// return "", nil
 }
 func AnalyzeFormat(fileName string) (string, error) {
 	file, err := os.Open(fileName)

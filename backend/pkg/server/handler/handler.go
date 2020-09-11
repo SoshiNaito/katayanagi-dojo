@@ -36,7 +36,7 @@ func PostContent(c *gin.Context) {
 
 	image, header, _ := c.Request.FormFile("image")
 
-	tmpFile, _ := os.Create("./tmp/" + header.Filename)
+	tmpFile, _ := os.Create("/tmp/" + header.Filename)
 
 	defer os.Remove(tmpFile.Name())
 	defer tmpFile.Close()
@@ -57,7 +57,7 @@ func PostContent(c *gin.Context) {
 
 	client, _ := infra.Init_mysql()
 
-	client.From("content_data").Create(&data)
+	client.From("post").Create(&data)
 	c.JSON(200, "ok")
 }
 
