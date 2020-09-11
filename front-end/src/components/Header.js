@@ -11,14 +11,24 @@ function Header() {
 			<Link className="header__post" to="/post">+</Link> */}
 			<Tabs aria-label="simple tabs example">
 				<Link to="/"><Tab label="Home" to="/" /></Link>
-				<Link to="/mypage"><Tab label="My Page" /></Link>
-				<Link to="/post"><Tab label="Post" /></Link>
+				{uid != null &&
+					<Link to="/mypage"><Tab label="My Page" /></Link>
+				}
+				{uid != null &&
+					<Link to="/post"><Tab label="Post" /></Link>
+				}
+
 				{uid === null &&
 					<Link to="/login"><Tab label="Login" /></Link>
 				}
 				{uid != null &&
 					<Link to="/login"><Tab label="Log Out" /></Link>
+
 				}
+
+
+
+
 			</Tabs>
 		</header>
 	)
