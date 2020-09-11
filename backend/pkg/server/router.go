@@ -1,6 +1,8 @@
 package server
 
 import (
+	"backend/pkg/server/handler"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,6 +13,8 @@ func Server(r *gin.Engine, port string) {
 			"message": "ping",
 		})
 	})
+	r.GET("/getPost", handler.GetPost)
+	r.POST("/post", handler.PostContent)
 
 	r.Run(port)
 }
