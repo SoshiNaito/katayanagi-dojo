@@ -30,74 +30,16 @@ const useStyles = makeStyles((theme) => ({
 function PostList() {
     const classes = useStyles();
 
-    var tileData = [
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoe",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoge",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoge",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoge",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoge",
-        },
-        {
-            Create_at: "",
-            Location: "hoge",
-            Post_url: "http://localhost:9000/mybucket/hoge.jpg",
-            Title: "hoge",
-            User_id: "hoge",
-        },
-    ];
-    // const [tileData, setPost] = useState({
-    // });
+
+    const [tileData, setPost] = useState([]);
 
 
     useEffect(() => {
         axios
             .get(`${'http://localhost:3001/getPost'}`)
             .then(results => {
-                // setPost(results.data)
-                console.log(results.data);
+                setPost(results.data)
+                // console.log(results.data);
             })
     });
 
