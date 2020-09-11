@@ -35,19 +35,19 @@ function Mypage() {
 
     useEffect(() => {
         const uid = sessionStorage.getItem('uid')
+
+        const hoge = { User_id: uid }
+
         axios
-            .get(`${'http://localhost:3001/getPost'}`)
+            .post(`${'http://localhost:3001/myPost'}`, hoge)
             .then(results => {
 
                 setPost(results.data)
-
+                console.log(results.data);
             })
     });
 
 
-    // var list = tileData.map(function (tile) {
-
-    // });
 
 
     return (
