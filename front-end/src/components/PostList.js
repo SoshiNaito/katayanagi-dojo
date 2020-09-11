@@ -67,7 +67,13 @@ function PostList() {
             User_id: "hoge",
         }
     ];
-    // const [tileData, setPost] = useState();
+    // const [tileData, setPost] = useState({
+    //     Create_at: "",
+    //     Location: "hoge",
+    //     Post_url: "http://localhost:9000/mybucket/hoge.jpg",
+    //     Title: "hoge",
+    //     User_id: "hoge",
+    // });
 
 
     useEffect(() => {
@@ -84,7 +90,8 @@ function PostList() {
 
     // });
 
-
+    const [count, setCount] = useState(0);
+    const [isRed, setIsRed] = useState(false);
     return (
 
         <div className={classes.root}>
@@ -108,8 +115,15 @@ function PostList() {
                 ))}
 
             </GridList>
-            {/* <div>
-            </div> */}
+            <div
+                style={isRed ? { color: 'red' } : null}
+                onClick={() => {
+                    setCount(count + 1);
+                    setIsRed((count + 1) % 3 === 0);
+                }}
+            >
+                {count}
+            </div>
 
         </div>
 
