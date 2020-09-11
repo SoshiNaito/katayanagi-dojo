@@ -4,7 +4,10 @@ import (
 	"backend/pkg/infra"
 	"backend/pkg/server/model"
 	"backend/pkg/server/usecase"
+	"encoding/json"
 	"fmt"
+	"io"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -23,20 +26,30 @@ func GetPost(c *gin.Context) {
 
 func PostContent(c *gin.Context) {
 
-	var requestData Data
+	// var requestData Data
 	var data model.Post
-	c.BindJSON(&requestData)
 
-	// uuidObj, _ := uuid.NewRandom()
+	jsonStr := c.Request.FormValue("formData")
+	var p Data
+	fmt.Println("hugahugaaaaaaaa", jsonStr)
+	json.Unmarshal([]byte(jsonStr), &p)
 
-	// content_id := uuidObj.String()
-	fmt.Println("hogehoge", requestData)
-	path, err := usecase.SaveImage(requestData.Post_image)
+	image, header, _ := c.Request.FormFile("image")
+
+	tmpFile, _ := os.Create("./tmp/" + header.Filename)
+
+	defer os.Remove(tmpFile.Name())
+	defer tmpFile.Close()
+	io.Copy(tmpFile, image)
+
+	path, err := usecase.SaveImage(tmpFile.Name())
 	fmt.Println("hoigehoge", path, err)
-	data.User_id = requestData.User_id
-	data.Location = requestData.Location
+	data.User_id = p.User_id
+	data.Location = p.Location
 	data.Post_url = path
-	data.Title = requestData.Title
+	data.Title = p.Title
+
+	data.Post_id = usecase.Uuid4()
 	day := time.Now()
 	const layout = "2006-01-02"
 
@@ -62,8 +75,8 @@ func MyPost(c *gin.Context) {
 }
 
 type Data struct {
-	User_id    string `json:"User_id"`
-	Location   string `json:"Location"`
-	Title      string `json:"Title"`
-	Post_image string `json:"Post_image"`
+	User_id    string `json:"user_id"`
+	Location   string `json:"location"`
+	Title      string `json:"title"`
+	Post_image string `json:"post_image"`
 }

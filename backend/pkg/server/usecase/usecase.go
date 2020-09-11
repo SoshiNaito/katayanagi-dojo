@@ -2,10 +2,8 @@ package usecase
 
 import (
 	"backend/pkg/infra"
-	"encoding/base64"
 	"fmt"
 	"image"
-	"io/ioutil"
 	"os"
 
 	"github.com/google/uuid"
@@ -24,32 +22,18 @@ func Upload_S3(filepath string, filename string) (string, error) {
 	return s3.UploadOutput.Location, err
 }
 
-func SaveImage(data string) (string, error) {
+func SaveImage(filepath string) (string, error) {
 
-	encodeData, err := base64.StdEncoding.DecodeString(data)
-	if err != nil {
-		return "", err
-	}
-
-	tmpFile, err := ioutil.TempFile("", "")
-	if err != nil {
-		return "", err
-	}
-	defer os.Remove(tmpFile.Name())
-
-	tmpFile.Write(encodeData)
-	tmpFile.Close()
-
-	format, err := AnalyzeFormat(tmpFile.Name())
+	format, err := AnalyzeFormat(filepath)
 	if err != nil {
 		return "", err
 	}
 
 	if format == "jpeg" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("%s.jpg", Uuid4()))
+		result_path, err := Upload_S3(filepath, fmt.Sprintf("%s.jpg", Uuid4()))
 		return result_path, err
 	} else if format == "png" {
-		result_path, err := Upload_S3(tmpFile.Name(), fmt.Sprintf("%s.png", Uuid4()))
+		result_path, err := Upload_S3(filepath, fmt.Sprintf("%s.png", Uuid4()))
 		return result_path, err
 	}
 
