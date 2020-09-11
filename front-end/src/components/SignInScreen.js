@@ -13,7 +13,6 @@ const uiConfig = {
 function SignInScreen() {
 	return (
 		<div>
-			<p>Please sign-in:</p>
 			<StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
 		</div>
 	);
