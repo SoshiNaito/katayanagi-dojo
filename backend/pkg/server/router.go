@@ -12,14 +12,5 @@ func Server(r *gin.Engine, port string) {
 		})
 	})
 
-	r.GET("/sign-in", func(c *gin.Context) {
-		// var user model.User
-		// 	user.Name = "aaaa"
-		// 	fmt.Printf(user)
-		// 	// if err := c.ShouldBindJSON(&json); err != nil {
-		// 	// 	c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		// 	// 	return
-		// 	// }
-	})
 	r.Run(port)
 }
