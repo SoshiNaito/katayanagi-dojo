@@ -9,7 +9,7 @@ import (
 
 func GetPost(c *gin.Context) {
 
-	var data model.Post
+	var data []model.Post
 
 	client, _ := infra.Init_mysql()
 
